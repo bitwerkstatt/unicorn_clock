@@ -84,8 +84,6 @@ while True:
         minutes_to_set = clock.datetime()[5]
         
     if unicorn.is_pressed(unicorn.BUTTON_Y):
-        print("Setting time")
-        print("Setting time", hours_to_set, minutes_to_set)
         clock.datetime((2023,7,15,0,hours_to_set, minutes_to_set,0,0))
         mode = MODE_RUNCLOCK
         
