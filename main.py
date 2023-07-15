@@ -13,10 +13,6 @@ clock = machine.RTC()
 handling_a_ts = time.ticks_ms()
 handling_b_ts = time.ticks_ms()
 
-w = unicorn.get_width()
-h = unicorn.get_height()
-
-
 mode = MODE_RUNCLOCK
 hours_to_set = 0
 minutes_to_set = 0
