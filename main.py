@@ -48,8 +48,8 @@ def render_time(hours, minutes, seconds):
     # Top minute lamps
     for i in range(11):
         if i < minutes//5:
-            if i>0 and (i+1)%3 == 0:
-                draw_lamp(i,4,1,1,153,153,255)
+            if i>0 and (i+1)%2 == 0:
+                draw_lamp(i,4,1,1,0,17,238)
             else:
                 draw_lamp(i,4,1,1,58,75,126)                
         else:
@@ -58,7 +58,7 @@ def render_time(hours, minutes, seconds):
     # Bottom minute lamps
     for i in range(4):
         if i < minutes%5:
-            draw_lamp(i*4,5,3,1,0,0,255)
+            draw_lamp(i*4,5,3,1,51,102,255)
         else:
             draw_lamp(i*4,5,3,1,20,20,20)
             
@@ -68,7 +68,7 @@ def render_time(hours, minutes, seconds):
             draw_lamp(1+i,3,1,1,0,0,255)
         else:
             if seconds % 2:
-                draw_lamp(1+i,3,1,1,136,34,17)
+                draw_lamp(1+i,3,1,1,204,102,153)
             else:
                 draw_lamp(1+i,3,1,1,20,20,20)
 
