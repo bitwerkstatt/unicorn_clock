@@ -13,6 +13,7 @@ clock = machine.RTC()
 handling_a_ts = time.ticks_ms()
 handling_b_ts = time.ticks_ms()
 handling_x_ts = time.ticks_ms()
+handling_y_ts = time.ticks_ms()
 
 mode = MODE_RUNCLOCK
 hours_to_set = 0
@@ -48,7 +49,7 @@ def render_time(hours, minutes, seconds):
     # Top minute lamps
     for i in range(11):
         if i < minutes//5:
-            if i>0 and (i+1)%2 == 0:
+            if i>0 and (i+1)%3 == 0:
                 draw_lamp(i,4,1,1,0,17,238)
             else:
                 draw_lamp(i,4,1,1,58,75,126)                
@@ -83,6 +84,7 @@ while True:
     handling_button_a = unicorn.is_pressed(unicorn.BUTTON_A) and not (current_tick - handling_a_ts) < BUTTON_IDLE_TIME 
     handling_button_b = unicorn.is_pressed(unicorn.BUTTON_B) and not (current_tick - handling_b_ts) < BUTTON_IDLE_TIME
     handling_button_x = unicorn.is_pressed(unicorn.BUTTON_X) and not (current_tick - handling_x_ts) < BUTTON_IDLE_TIME
+    handling_button_y = unicorn.is_pressed(unicorn.BUTTON_Y) and not (current_tick - handling_y_ts) < BUTTON_IDLE_TIME
     
     if handling_button_x:
         if mode == MODE_SETTIME:
@@ -93,6 +95,10 @@ while True:
             minutes_to_set = clock.datetime()[5]
             mode = MODE_SETTIME
         handling_x_ts = current_tick
+        
+    if handling_button_y:
+        print("Nothing ever happens...")
+        handling_y_ts = current_tick
               
     if mode == MODE_SETTIME:
                 
